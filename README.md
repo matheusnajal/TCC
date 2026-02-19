@@ -16,11 +16,11 @@ A pesquisa avaliou a viabilidade, estabilidade e custo computacional da implemen
 
 * **Godot 4:** Utiliza o nó `SoftBody3D` com integração ao Jolt Physics e Bullet Physics.
 
-* **Unity 6:** Análise do componente nativo `Cloth` e soluções custumizadas via *scripts* e *assets* (Como Obi SoftBody).
+* **Unity 6:** Análise do componente nativo `Cloth` e soluções customizadas via *scripts* e *assets* (como Obi SoftBody).
 
-* **Unreal Engine 5:** Foco nos solucionadores nativos baseados no motor físico Chaos (Chaos Flesh para geometrias volumétricas e Chaos Cloth para tecidos)
+* **Unreal Engine 5:** Foco nos solucionadores nativos baseados no motor físico Chaos (Chaos Flesh para geometrias volumétricas e Chaos Cloth para tecidos).
 
-* **NVIDIA Omniverse:** Utilização do motor PhysX5, aplicando o Método dos Elementos Finitos (FEM) para *Deformable Bodies* e o sistema *Particle Cloth* para tecidos.
+* **NVIDIA Omniverse:** Utilização do motor PhysX 5, aplicando o Método dos Elementos Finitos (FEM) para *Deformable Bodies* e o sistema *Particle Cloth* para tecidos.
 
 ## Casos Experimentais
 
@@ -30,36 +30,20 @@ Foram desenvolvidos dois cenários para estressar os motores de física de cada 
 
 2. **Simulação de Toalha sobre uma Mesa:** Avaliação da aderência e fluidez de uma malha plana (*cloth*) sobre uma geometria complexa (superfície circular plana), focada no comportamento aerodinâmico e atrito.
 
-## Demonstrações Visuais
+## Resultados e Considerações
 
-> **Nota de Implementação:** Os vídeos (`.mkv`) estão ancorados em imagens de miniatura (`.png`). Clique nas miniaturas para reproduzir os arquivos do repositório. O layout segue o padrão de exibição em colunas agrupadas de duas em duas.
+A análise comparativa revelou o *trade-off* estrutural entre fidelidade e custo de processamento:
 
-### Godot 4
-| Caso 1: Esfera 1 (Bouncing) | Caso 2: Esfera 2 (Acoplamento) |
-| :---: | :---: |
-| [![Godot Esfera 1](.\images\godot\Esfera1.png)](.\videos\godot\Godot1.mp4) | [![Godot Esfera 2](.\images\godot\Esfera2.png)](.\videos\godot\Godot2.mp4) |
-| **Caso 3: Toalha sobre a Mesa** | |
-| [![Godot Toalha](.\images\godot\Toalha.png)](.\videos\godot\Godot3.mp4) | |
+* **Godot 4:** Implementação com processamento leve e rápido, contudo, é a plataforma mais instável devido a *bugs* inerentes ao `SoftBody3D`.
 
-### Unreal Engine 5
-| Caso 1: Esfera 1 (Bouncing) | Caso 2: Esfera 2 (Acoplamento) |
-| :---: | :---: |
-| [![Unreal Esfera 1](./thumbs/unreal_esfera1.png)](./videos/unreal_esfera1.mkv) | [![Unreal Esfera 2](./thumbs/unreal_esfera2.png)](./videos/unreal_esfera2.mkv) |
-| **Caso 3: Toalha sobre a Mesa** | |
-| [![Unreal Toalha](./thumbs/unreal_toalha.png)](./videos/unreal_toalha.mkv) | |
+* **Unity:** Inválida para colisões complexas de forma nativa. O componente `Cloth` é eficiente, mas restrito a colisões com formas primitivas esféricas ou de cápsula.
 
-### NVIDIA Omniverse
-| Caso 1: Esfera 1 (Bouncing) | Caso 2: Esfera 2 (Acoplamento) |
-| :---: | :---: |
-| [![Omniverse Esfera 1](./thumbs/omni_esfera1.png)](./videos/omni_esfera1.mkv) | [![Omniverse Esfera 2](./thumbs/omni_esfera2.png)](./videos/omni_esfera2.mkv) |
-| **Caso 3: Toalha sobre a Mesa** | |
-| [![Omniverse Toalha](./thumbs/omni_toalha.png)](./videos/omni_toalha.mkv) | |
+* **Unreal Engine:** Resultados robustos e estáveis. Trata-se de uma opção viável para produção de alta fidelidade, porém o custo computacional exigido (especialmente pelo Chaos Flesh) é elevado.
 
-### Unity 6
-| Caso 1: Esfera 1 (Bouncing) | Caso 2: Esfera 2 (Acoplamento) |
-| :---: | :---: |
-| [![Unity Esfera 1](./thumbs/unity_esfera1.png)](./videos/unity_esfera1.mkv) | [cite_start]*Inviável via recursos nativos.* O componente `Cloth` não possui parâmetros de elasticidade ou preservação de volume necessários para este comportamento[cite: 558, 560]. |
-| **Caso 3: Toalha sobre a Mesa** | |
-| [cite_start]*Inviável via recursos nativos.* O componente `Cloth` colide apenas com geometrias esféricas ou capsulares[cite: 565, 566]. | |
+* **NVIDIA Omniverse:** Qualidade de simulação superior, resolvendo interações e colisões de forma impecável. É, todavia, a ferramenta mais custosa em termos de *hardware*, exigindo compensações como DLSS.
 
----
+## Documento Completo
+
+Para acessar a pesquisa detalhada, referências teóricas e análises completas de desempenho, faça o download do documento do TCC abaixo:
+
+[📄 Baixar PDF do TCC (TCC_MatheusNajal.pdf)](TCC_MatheusNajal.pdf)
