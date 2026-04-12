@@ -6,10 +6,6 @@
 
 **Ano:** 2026
 
-## Sobre o Projeto
-
-Este projeto de Trabalho de Conclusão de Curso (TCC) investiga e compara métodos geométricos, físicos e híbridos para a simulação de corpos e tecidos deformáveis. O foco é a integração e a avaliação técnica do desempenho dessas simulações em motores de jogos contemporâneos para o desenvolvimento de aplicações gráficas interativas.
-
 ## Motores Analisados
 
 A pesquisa avaliou a viabilidade, estabilidade e custo computacional da implementação de *soft body* e *cloth* nas seguintes plataformas:
